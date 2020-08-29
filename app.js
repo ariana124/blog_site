@@ -17,24 +17,12 @@ app.get("/", function(req, res) {
   res.render("home", {homeContent: homeStartingContent});
 });
 
-app.post("/", function(req, res) {
-  res.redirect("/");
-});
-
 app.get("/about", function(req, res) {
   res.render("about", {aboutContent: aboutContent});
 });
 
-app.post("/about", function(req, res) {
-  res.redirect("about");
-});
-
 app.get("/contact", function(req, res) {
   res.render("contact", {contactContent: contactContent});
-});
-
-app.post("/contact", function(req, res) {
-  res.redirect("contact");
 });
 
 app.listen(3000, function() {
