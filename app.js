@@ -16,9 +16,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", function(req, res) {
-
-  // console.log(totalPosts);
-
   res.render("home", {homeContent: homeStartingContent, totalPosts: totalPosts});
 });
 
@@ -46,6 +43,10 @@ app.post("/compose", function(req, res) {
   totalPosts.push(post);
 
   res.redirect("/");
+});
+
+app.get("/post/:postName", function(req, res) {
+	console.log(req.params.postName);
 });
 
 app.listen(3000, function() {
