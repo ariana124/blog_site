@@ -32,9 +32,10 @@ app.get("/compose", function(req, res) {
 app.post("/compose", function(req, res) {
 
   const title = req.body.postTitle;
-  const post = req.body.postContent;
-  
-  console.log(`${title}: ${post}`);
+  const content = req.body.postContent;
+  const post = {title: content}
+
+  console.log(post);
 
   res.redirect("/compose")
 });
