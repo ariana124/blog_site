@@ -7,7 +7,13 @@
     <% totalPosts.forEach(function(post) { %>
         <div>
             <h3><%= post.title %></h3>
+
+        <% if (post.content.length > 150) { %>
+            <p><%= post.content.substring(0, 150) + " ..." %></p>
+        <% } else { %>
             <p><%= post.content %></p>
+        <% } %>
+            
         </div>
     <% }); %>
 
