@@ -8,8 +8,11 @@
         <div>
             <h3><%= post.title %></h3>
 
-        <% if (post.content.length > 150) { %>
-            <p><%= post.content.substring(0, 150) + " ..." %></p>
+        <% if (post.content.length > 135) { %>
+            <p>
+                <%= post.content.substring(0, 135) + " ..." %>
+                <a href="/post/<%= post.title %>">Read More</a>
+            </p>
         <% } else { %>
             <p><%= post.content %></p>
         <% } %>
