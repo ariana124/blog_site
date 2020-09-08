@@ -11,7 +11,7 @@
         <% if (post.content.length > 135) { %>
             <p>
                 <%= post.content.substring(0, 135) + " ..." %>
-                <a href="/post/<%= post.title %>">Read More</a>
+                <a href="/post/<%= post._id %>">Read More</a>
             </p>
         <% } else { %>
             <p><%= post.content %></p>
