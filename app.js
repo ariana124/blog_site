@@ -27,7 +27,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", function(req, res) {
-  res.render("home", {homeContent: homeStartingContent, totalPosts: totalPosts});
+
+  Post.find({}, function(err, posts){
+    res.render("home", {homeContent: homeStartingContent, totalPosts: posts});
+  })
+
 });
 
 app.get("/about", function(req, res) {
@@ -46,14 +50,20 @@ app.post("/compose", function(req, res) {
 
   const title = req.body.postTitle;
   const content = req.body.postContent;
-  const post = {
+
+  const post = new Post ({
     title: title,
     content: content
-  }
+  });
 
-  totalPosts.push(post);
+  post.save(function(err) {
+    if (err) {
+      console.log(error);
+    } else {
+      res.redirect("/");
+    }
+  });
 
-  res.redirect("/");
 });
 
 app.get("/post/:postName", function(req, res) {
